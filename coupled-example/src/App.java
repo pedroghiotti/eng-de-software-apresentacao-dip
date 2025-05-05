@@ -1,7 +1,4 @@
-import java.util.List;
-
 import entity.User;
-import notifications.NotificationChannel;
 import service.NotificationService;
 
 public class App {
@@ -9,11 +6,27 @@ public class App {
         NotificationService notificationService = new NotificationService();
         
         // Criando Usuários
-        User emailAndSmsUser = new User("Chatty", List.of(NotificationChannel.EMAIL, NotificationChannel.SMS));
-        User emailOnlyUser = new User("Mailman", List.of(NotificationChannel.EMAIL));
-        User smsOnlyUser = new User("Samson", List.of(NotificationChannel.SMS));
+        User emailAndSmsUser = new User(
+            "Chatty",
+            true,
+            true
+        );
+
+        User emailOnlyUser = new User(
+            "Mailman",
+            true,
+            false
+        );
+
+        User smsOnlyUser = new User(
+            "Samson",
+            false,
+            true
+        );
 
         // Notificando Usuários
+        System.out.println();
+
         notificationService.notify(emailAndSmsUser, "Você foi notificado!");
         System.out.println();
 
